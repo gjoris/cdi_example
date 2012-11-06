@@ -1,6 +1,6 @@
 package eu.droidit.example.controller;
 
-import eu.droidit.example.repository.SampleRespository;
+import eu.droidit.example.repository.SampleRepository;
 
 import javax.enterprise.inject.Any;
 import javax.inject.Inject;
@@ -17,13 +17,28 @@ public class SampleController {
 
     @Inject
     @Any
-    private SampleRespository repository;
+    private SampleRepository repository;
 
     public Response get() {
         return Response.ok().build();
     }
 
     public Response post(String message) {
-        return Response.ok().build();
+        repository.add(message);
+        return Response.ok().entity("Your message has been posted!").build();
+    }
+
+    public Response put(String message) {
+        repository.add(message);
+        return Response.ok().entity("Your message has been put!").build();
+    }
+
+    public Response delete(int id) {
+        if (repository.deleteById(id)) return Response.ok().entity("Your message has been deleted!").build();
+        return Response.notModified().entity("Your message could not be found!").build();
+    }
+
+    public Response getList() {
+        return Response.ok().entity(repository.getList()).build();
     }
 }
