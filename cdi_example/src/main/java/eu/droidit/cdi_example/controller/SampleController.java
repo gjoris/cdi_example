@@ -1,4 +1,4 @@
-package eu.droidit.cdi_example;
+package eu.droidit.cdi_example.controller;
 
 /**
  * Created with IntelliJ IDEA.
