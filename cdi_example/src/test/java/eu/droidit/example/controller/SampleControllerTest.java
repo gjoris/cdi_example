@@ -1,21 +1,30 @@
 package eu.droidit.example.controller;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import eu.droidit.example.repository.SampleRepository;
+import eu.droidit.example.utils.Forwarder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.Response;
 
-import java.util.List;
+import java.io.IOException;
+import java.util.Map;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,30 +41,30 @@ public class SampleControllerTest {
 
     @Mock
     private SampleRepository repository;
+
     private final String message = "My Little String";
     private final int id = 1;
 
     @Before
     public void setUp() {
+
     }
 
-    @Test
-    public void testGet() {
-        Response response = controller.get();
-
-        assertThat(response.getStatus()).isEqualTo(Response.Status.OK.getStatusCode());
+    //@Test
+    public void testGet() throws IOException, ServletException {
+        //no need to test the get, simple forward
     }
 
     @Test
     public void testGetList() {
-        List mockedList = Lists.newArrayList();
-        when(repository.getList()).thenReturn(mockedList);
+        Map<Integer, String> mockedMap = Maps.newHashMap();
+        when(repository.getMap()).thenReturn(mockedMap);
 
-        Response response = controller.getList();
+        Response response = controller.getMap();
 
         assertThat(response.getStatus()).isEqualTo(Response.Status.OK.getStatusCode());
-        verify(repository).getList();
-        assertThat(response.getEntity()).isEqualTo(mockedList);
+        verify(repository).getMap();
+        assertThat(response.getEntity()).isEqualTo(mockedMap);
     }
 
     @Test

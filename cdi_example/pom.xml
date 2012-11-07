@@ -23,6 +23,14 @@
             <version>1.14</version>
             <scope>test</scope>
         </dependency>
+        <!-- Servlet API to write tests for the ServletContext etc. -->
+        <!-- Needs to be here in order to work (before the JavaEE API) -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.servlet</artifactId>
+            <version>3.2-b05</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- The JavaEE API -->
         <dependency>
             <groupId>javax</groupId>
@@ -61,6 +69,21 @@
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito</artifactId>
+            <version>1.4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-module-junit4</artifactId>
+            <version>1.4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-core</artifactId>
+            <version>1.4.12</version>
         </dependency>
     </dependencies>
 

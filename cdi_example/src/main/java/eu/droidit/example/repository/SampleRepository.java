@@ -1,6 +1,7 @@
 package eu.droidit.example.repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,5 +15,5 @@ public interface SampleRepository {
 
     boolean deleteById(int id);
 
-    List getList();
+    Map<Integer, String> getMap();
 }

@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.mockito.internal.util.reflection.Whitebox.setInternalState;
@@ -51,6 +52,11 @@ public class SampleRepositoryImplTest {
 
     @Test
     public void testGetList() {
+        givenMapContainsValue();
 
+        Map<Integer, String> map = repository.getMap();
+
+        assertThat(map.size()).isEqualTo(1);
+        assertThat(map.get(0)).isEqualTo(message);
     }
 }

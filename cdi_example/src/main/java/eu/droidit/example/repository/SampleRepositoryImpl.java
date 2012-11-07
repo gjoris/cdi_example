@@ -6,7 +6,6 @@ import org.apache.commons.lang.StringUtils;
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,7 +37,7 @@ public class SampleRepositoryImpl implements SampleRepository {
     }
 
     @Override
-    public List getList() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Map<Integer, String> getMap() {
+        return keyMap;
     }
 }
