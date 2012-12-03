@@ -1,4 +1,8 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:include page="header.jsp"/>
+<script src="<c:url value='/js/jquery-1.8.2.min.js' />"></script>
+<script src="<c:url value='/js/knockout-2.2.0.js' />"></script>
+<script src="<c:url value='/js/MessageModel.js' />"></script>
 <!-- Main hero unit for a primary marketing message or call to action -->
 <div class="hero-unit">
     <h1>Hello, CDI!</h1>
