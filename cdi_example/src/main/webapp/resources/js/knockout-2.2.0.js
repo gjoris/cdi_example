@@ -1453,8 +1453,8 @@
             return a.replace(pa,function (a, e, f, g, h, j, k) {
                 return V(k, e, b)
             }).replace(qa, function (a, e) {
-                return V(e, "<\!-- ko --\>", b)
-            })
+                    return V(e, "<\!-- ko --\>", b)
+                })
         }, jb:function (a) {
             return b.s.qa(function (d, c) {
                 d.nextSibling && b.Ea(d.nextSibling, a, c)

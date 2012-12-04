@@ -4,7 +4,7 @@
 <head>
     <title>CDI Example Application</title>
 </head>
-<link href="<c:url value='/bootstrap/css/bootstrap.min.css' />" rel="stylesheet" media="screen">
+<link href="<c:url value='/resources/bootstrap/css/bootstrap.min.css' />" rel="stylesheet" media="screen">
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">

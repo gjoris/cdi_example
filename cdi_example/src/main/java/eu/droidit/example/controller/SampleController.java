@@ -29,14 +29,14 @@ public class SampleController {
     private SampleRepository repository;
 
     @GET
-    public Viewable get() throws URISyntaxException {
-        return new Viewable("/index", this);
+    @Produces(MediaType.TEXT_HTML)
+    public Response get() throws URISyntaxException {
+        return Response.ok().entity(new Viewable("/header")).build();
     }
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response post(String message) {
-        repository.add(message);
+    public Response post() {
+        repository.add("");
         return Response.ok().entity("Your message has been posted!").build();
     }
 

@@ -64,7 +64,8 @@ public class SampleControllerTest {
 
     @Test
     public void testPost() {
-        Response response = controller.post(message);
+        //Response response = controller.post("message");
+        Response response = controller.post();
 
         assertThat(response.getStatus()).isEqualTo(Response.Status.OK.getStatusCode());
         verify(repository).add(message);

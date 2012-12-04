@@ -9,9 +9,9 @@ function MessageModel() {
     var self = this;
     self.messageArray = ko.observableArray();
 
-    self.refresh = function() {
-        $.ajax()
-    }
+//    self.refresh = function() {
+//        $.ajax()
+//    }
 
 }
 
