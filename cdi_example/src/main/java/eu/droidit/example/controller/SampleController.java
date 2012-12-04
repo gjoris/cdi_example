@@ -2,24 +2,17 @@ package eu.droidit.example.controller;
 
 import com.sun.jersey.api.view.Viewable;
 import eu.droidit.example.repository.SampleRepository;
-import eu.droidit.example.repository.SampleRepositoryImpl;
-import eu.droidit.example.utils.Forwarder;
 
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Any;
 import javax.inject.Inject;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.StreamingOutput;
 import java.io.IOException;
-import java.net.URI;
+import java.io.OutputStream;
 import java.net.URISyntaxException;
-
-import static eu.droidit.example.utils.Forwarder.forward;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -36,7 +29,7 @@ public class SampleController {
     private SampleRepository repository;
 
     @GET
-    public Viewable get(@Context HttpServletRequest request, @Context HttpServletResponse response) throws URISyntaxException {
+    public Viewable get() throws URISyntaxException {
         return new Viewable("/index", this);
     }
 
@@ -65,6 +58,15 @@ public class SampleController {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMap() {
-        return Response.ok().entity(repository.getMap()).build();
+        final Map<Integer, String> stringMap = repository.getMap();
+        StreamingOutput output = new StreamingOutput() {
+            @Override
+            public void write(OutputStream output) throws IOException, WebApplicationException {
+                for (Integer integer : stringMap.keySet()) {
+                    output.write((integer + " : " + stringMap.get(integer)).getBytes());
+                }
+            }
+        };
+        return Response.ok().entity(output).build();
     }
 }

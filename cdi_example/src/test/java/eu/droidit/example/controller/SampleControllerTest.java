@@ -2,29 +2,23 @@ package eu.droidit.example.controller;
 
 import com.google.common.collect.Maps;
 import eu.droidit.example.repository.SampleRepository;
-import eu.droidit.example.utils.Forwarder;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.core.Response;
-
+import javax.ws.rs.core.StreamingOutput;
 import java.io.IOException;
 import java.util.Map;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 /**
  * Created with IntelliJ IDEA.
@@ -50,7 +44,8 @@ public class SampleControllerTest {
 
     }
 
-    //@Test
+    @Test
+    @Ignore
     public void testGet() throws IOException, ServletException {
         //no need to test the get, simple forward
     }
@@ -64,7 +59,7 @@ public class SampleControllerTest {
 
         assertThat(response.getStatus()).isEqualTo(Response.Status.OK.getStatusCode());
         verify(repository).getMap();
-        assertThat(response.getEntity()).isEqualTo(mockedMap);
+        assertThat(response.getEntity()).isInstanceOf(StreamingOutput.class);
     }
 
     @Test
