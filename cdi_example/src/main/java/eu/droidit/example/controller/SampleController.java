@@ -31,7 +31,7 @@ public class SampleController {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public Response get() throws URISyntaxException {
-        return Response.ok().entity(new Viewable("/header")).build();
+        return Response.ok().entity(new Viewable("/index")).build();
     }
 
     @POST

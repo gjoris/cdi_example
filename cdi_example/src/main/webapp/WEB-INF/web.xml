@@ -16,7 +16,7 @@
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
-            <param-value>/resources/.*</param-value>
+            <param-value>/((resources|WEB-INF/jsp))/.*</param-value>
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.config.feature.Redirect</param-name>
